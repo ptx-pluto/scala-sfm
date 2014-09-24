@@ -7,16 +7,16 @@ class Feature(val row: Double,
               val col: Double,
               val scale: Double,
               val direction: Double,
-              val descriptor: Vector[Double])
+              val descriptor: Array[Double])
 
 
 object JsonProtocol {
 
-  implicit def vectorToJson(v: Vector[Double]) = {
+  implicit def vectorToJson(v: Array[Double]) = {
     v.map(x=>JsNumber(x)).toList
   }
 
-  implicit def jsarrayToVector(vector: Vector[JsValue]) = {
+  implicit def jsarrayToVector(vector: Array[JsValue]) = {
     vector.map {
       case JsNumber(n) => n.toDouble
       case _ => throw new DeserializationException("Vector is invalid!")
@@ -36,7 +36,7 @@ object JsonProtocol {
     def read(json: JsValue) = {
       json.asJsObject.getFields("row", "col", "scale", "direction", "vector") match {
         case Seq(JsNumber(row), JsNumber(col), JsNumber(scale), JsNumber(direction), JsArray(vector: List[JsValue])) =>
-          new Feature(row.toDouble, col.toDouble, scale.toDouble, direction.toDouble, vector.toVector)
+          new Feature(row.toDouble, col.toDouble, scale.toDouble, direction.toDouble, vector.toArray)
         case _ => throw new DeserializationException("value is invalid!")
       }
     }
