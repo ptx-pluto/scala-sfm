@@ -10,6 +10,6 @@ organization := "com.websfm"
 scalaVersion := "2.11.2"
 
 // set the main Scala source directory to be <base>/src
-scalaSource in Compile := baseDirectory.value / "src"
+scalaSource in Compile := baseDirectory.value / "src/main"
 
 libraryDependencies += "io.spray" %% "spray-json" % "1.2.6"
