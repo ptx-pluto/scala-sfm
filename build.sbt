@@ -12,10 +12,9 @@ scalaVersion := "2.11.2"
 // set the main Scala source directory to be <base>/src
 scalaSource in Compile := baseDirectory.value / "src/main"
 
-libraryDependencies += "io.spray" %% "spray-json" % "1.2.6"
-
 libraryDependencies  ++= Seq(
-  // other dependencies here
+  "io.spray" %% "spray-json" % "1.2.6",
+
   "org.scalanlp" %% "breeze" % "0.8.1",
   // native libraries are not included by default. add this if you want them (as of 0.7)
   // native libraries greatly improve performance, but increase jar sizes.
