@@ -1,11 +1,7 @@
 package com.websfm
 
-
-import scala.io.Source
 import spray.json._
 import spray.json.DefaultJsonProtocol._
-import JsonProtocol._
-
 
 class Feature(val row: Double,
               val col: Double,
